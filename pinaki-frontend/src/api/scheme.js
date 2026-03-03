@@ -1,0 +1,10 @@
+import client from './client';
+export const getDashboard = () => client.get('/member/dashboard/');
+export const getTransactions = (page=1) => client.get(`/member/transactions/?page=${page}`);
+export const getNotifications = () => client.get('/member/notifications/');
+export const uploadKYC = (formData) => client.post('/member/kyc/upload/', formData, { headers: {'Content-Type': 'multipart/form-data'} });
+export const getAdminStats = () => client.get('/admin/stats/');
+export const getMembers = (params={}) => client.get('/admin/members/', { params });
+export const getMemberDetail = (id) => client.get(`/admin/members/${id}/`);
+export const approveKYC = (id, data) => client.post(`/admin/members/${id}/kyc/`, data);
+export const recordPayment = (data) => client.post('/admin/payments/manual/', data);
